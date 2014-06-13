@@ -385,7 +385,6 @@
 				// are checked below.
 				if ( !data.align ) {
 					// Read the initial left/right alignment from the class set on element.
-					window.lastElem = this.element;
 					if ( alignClasses ) {
 						if ( this.element.hasClass( alignClasses[ 0 ] ) )
 							data.align = 'left';
@@ -396,8 +395,6 @@
 							this.element.removeClass( alignClasses[ alignmentsObj[ data.align ] ] );
 						else
 							data.align = 'none';
-
-						console.log("data.align = " +data.align);
 					}
 					// Read initial float style from figure/image and then remove it.
 					else {
@@ -451,7 +448,6 @@
 			// Overrides default method to handle internal mutability of Image2.
 			// @see CKEDITOR.plugins.widget#addClass
 			addClass: function( className ) {
-				console.log("adding class" + className);
 				getStyleableElement( this ).addClass( className );
 			},
 
@@ -778,10 +774,6 @@
 			hasCaption = widget.data.hasCaption;
 
 
-		console.log("setWrapperAlign:" + alignClasses);
-		console.log("widget.data.align:" + widget.data.align);
-		window.lastWidget = widget;
-
 		if ( alignClasses ) {
 			// Remove all align classes first.
 			for ( var i = 3; i--; )
@@ -799,7 +791,6 @@
 				if ( hasCaption )
 					wrapper.addClass( alignClasses[ 1 ] );
 			} else if ( align != 'none' ) {
-				console.log("adding class: " + alignClasses[ alignmentsObj[ align ] ]);
 				wrapper.addClass( alignClasses[ alignmentsObj[ align ] ] );
 			}
 		} else {
